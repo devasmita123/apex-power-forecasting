@@ -21,11 +21,12 @@ apex-power-forecasting/
 ├── requirements.txt           # Python Project Dependencies
 └── README.md                  # Implementation Manual
 
-🚀 Local Deployment Setup
-1. Initialize Virtual Environment & System Core
+## 🚀 Local Deployment Setup
+
+### 1. Initialize Virtual Environment & System Core
 Open your terminal in the root directory and run:
 
-Bash
+```bash
 # Create and activate an isolated python environment
 python -m venv venv
 .\venv\Scripts\Activate.ps1   # Windows (PowerShell)
@@ -33,37 +34,40 @@ source venv/bin/activate      # macOS/Linux
 
 # Install strict system dependencies
 pip install -r requirements.txt
-2. Launch the High-Performance Backend API
-Bash
+
+### 2. Launch the High-Performance Backend API
+```bash
 python backend/main.py
 The live production API server will start on http://localhost:8000.
 
 Explore full automated OpenAPI documentation at http://localhost:8000/docs.
 
-3. Serve the Real-Time Frontend UI Dashboard
+### 3. Serve the Real-Time Frontend UI Dashboard
 To prevent browser CORS or file-system protocol blocks, serve the interface folder through a localized Python server. Open a secondary terminal tab and run:
 
-Bash
+```bash
 cd frontend
 python -m http.server 5500
 Open your browser and navigate to: http://localhost:5500/index.html
 
-🐳 Docker Containerization Deployment
+# 🐳 Docker Containerization Deployment
 To deploy the entire production stack inside an isolated, platform-agnostic container environment, execute the following commands from the root directory:
 
-Bash
+```bash
 # 1. Build the production Docker image layers
 docker build -t apu-forecasting-app .
 
 # 2. Run the container instance mapped to port 8000
 docker run -d -p 8000:8000 --name apu-grid-engine apu-forecasting-app
-🛠️ Core Engineering & Model Architecture Justification
-1. Data Cleaning & Robust Preprocessing Pipeline
+
+#🛠️ Core Engineering & Model Architecture Justification
+
+### 1. Data Cleaning & Robust Preprocessing Pipeline
 Outlier Filtering: Implemented a rolling local Z-score tracking calculation to identify and drop noisy sensor spikes without distorting broader macroeconomic usage trends.
 
 Intelligent Imputation: Gaps and empty historical segments are systematically reconstructed using a data-driven time-of-day/day-of-week grouping map, maintaining structural seasonality.
 
-2. Feature Engineering Matrix
+### 2. Feature Engineering Matrix
 Exogenous Metrics: Captured thermal momentum trends using localized temperature, humidity, and cloud cover structures mapped to Dhanbad coordinates.
 
 Temporal Patterns: Modeled day-to-day cyclic variations using Sine and Cosine coordinate transforms alongside historical multi-step lag values (Lag 1, 2, and 144) to capture rolling load memory.
