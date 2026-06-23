@@ -6,6 +6,12 @@ This solution addresses real-world data issues (gaps, sensor errors, outliers), 
 
 ---
 
+## 📊 Dashboard Preview
+
+![APU Dashboard System Preview](frontend/dashboard_preview.png)
+
+---
+
 ## 🏗️ Repository Architecture
 ```text
 apex-power-forecasting/
@@ -20,6 +26,8 @@ apex-power-forecasting/
 ├── Dockerfile                 # Single Container Packaging Script
 ├── requirements.txt           # Python Project Dependencies
 └── README.md                  # Implementation Manual
+
+---
 
 ## 🚀 Local Deployment Setup
 
@@ -50,6 +58,8 @@ cd frontend
 python -m http.server 5500
 Open your browser and navigate to: http://localhost:5500/index.html
 
+---
+
 # 🐳 Docker Containerization Deployment
 To deploy the entire production stack inside an isolated, platform-agnostic container environment, execute the following commands from the root directory:
 
@@ -59,6 +69,8 @@ docker build -t apu-forecasting-app .
 
 # 2. Run the container instance mapped to port 8000
 docker run -d -p 8000:8000 --name apu-grid-engine apu-forecasting-app
+
+---
 
 #🛠️ Core Engineering & Model Architecture Justification
 
