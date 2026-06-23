@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APU Demand Forecasting Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen">
+
+    <header class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight text-emerald-400">Apex Power & Utilities (APU)</h1>
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-mono">Live Forecast Engine</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700/60">
+                <p class="text-xs text-gray-400 uppercase font-semibold">Location Target</p>
+                <p class="text-lg font-bold text-gray-200 mt-1">Dhanbad, JH</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700/60">
+                <p class="text-xs text-gray-400 uppercase font-semibold">Avg Predicted Temperature</p>
+                <p id="widget-temp" class="text-lg font-bold text-amber-400 mt-1">-- °C</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700/60">
+                <p class="text-xs text-gray-400 uppercase font-semibold">Avg Cloud Cover</p>
+                <p id="widget-cloud" class="text-lg font-bold text-blue-400 mt-1">-- %</p>
+            </div>
+            <div class="bg-gray-800 p-4 rounded-xl border border-gray-700/60">
+                <p class="text-xs text-gray-400 uppercase font-semibold">Grid Status / Holiday</p>
+                <p id="widget-holiday" class="text-sm font-bold text-emerald-400 mt-2 truncate">Checking Schedule...</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700/60 space-y-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-lg font-bold">144-Block Intelligent Power Demand Forecast</h2>
+                    <p class="text-xs text-gray-400">Dynamic load predictive modeling paired with real-time exogenous climate metrics</p>
+                </div>
+                <button onclick="fetchDashboardData()" class="bg-emerald-500 hover:bg-emerald-600 text-gray-900 px-4 py-2 rounded-lg text-xs font-bold transition-all">
+                    Refresh Forecast
+                </button>
+            </div>
+            
+            <div class="relative w-full h-[450px]">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
